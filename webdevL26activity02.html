@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Map Array Activity</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 700px; margin: auto; }
+    input, button { font-size: 16px; padding: 6px; margin: 4px; }
+    #output { font-weight: bold; margin-top: 12px; }
+  </style>
+</head>
+<body>
+  <h2>Array Map Activity</h2>
+  <p>Enter numbers separated by commas:</p>
+  <input id="numbers" placeholder="e.g. 2,4,6,8,10" size="30">
+
+  <div>
+    <button onclick="doubleNumbers()">Double Each</button>
+    <button onclick="squareNumbers()">Square Each</button>
+    <button onclick="halfNumbers()">Half Each</button>
+  </div>
+
+  <p id="output"></p>
+
+  <script>
+    function getArray() {
+      const raw = document.getElementById('numbers').value.trim();
+      if (!raw) return [];
+      return raw.split(',').map(x => Number(x.trim()));
+    }
+
+    function showResult(text, arr) {
+      document.getElementById('output').innerHTML = text + ": [" + arr.join(', ') + "]";
+    }
+
+    function doubleNumbers() {
+      const arr = getArray();
+      if (!arr.length) return alert("Please enter some numbers!");
+      const result = arr.map(x => x * 2);
+      showResult("Doubled", result);
+    }
+
+    function squareNumbers() {
+      const arr = getArray();
+      if (!arr.length) return alert("Please enter some numbers!");
+      const result = arr.map(x => x * x);
+      showResult("Squared", result);
+    }
+
+    function halfNumbers() {
+      const arr = getArray();
+      if (!arr.length) return alert("Please enter some numbers!");
+      const result = arr.map(x => x / 2);
+      showResult("Halved", result);
+    }
+  </script>
+</body>
+</html>

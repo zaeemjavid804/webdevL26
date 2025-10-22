@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evaluate Variable Activity</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 700px; margin: auto; }
+    input, button { font-size: 16px; padding: 6px; margin: 4px; }
+    #output { font-weight: bold; margin-top: 12px; }
+  </style>
+</head>
+<body>
+  <h2>Evaluate Variable Activity</h2>
+  <p>We have some variables already defined:</p>
+  <pre>
+    a = 10
+    b = 5
+    c = 2
+  </pre>
+
+  <p>Now type your own expression using these variables (for example: <code>a + b * c</code> or <code>(a + b) / c</code>)</p>
+
+  <input id="expression" placeholder="Enter expression here" size="40">
+  <button onclick="evaluateExpression()">Evaluate</button>
+
+  <p id="output"></p>
+
+  <script>
+    // Predefined variables
+    let a = 10;
+    let b = 5;
+    let c = 2;
+
+    function evaluateExpression() {
+      const expr = document.getElementById('expression').value.trim();
+      if (!expr) {
+        alert("Please enter an expression!");
+        return;
+      }
+
+      try {
+        // Use eval() to calculate the result dynamically
+        const result = eval(expr);
+        document.getElementById('output').innerHTML =
+          `Expression: <code>${expr}</code> <br> Result: <strong>${result}</strong>`;
+      } catch (error) {
+        document.getElementById('output').innerHTML = "❌ Invalid expression. Please try again.";
+      }
+    }
+  </script>
+</body>
+</html>
